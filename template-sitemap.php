@@ -3,6 +3,7 @@
 Template Name: Automagic Sitemap
 */
  ?>
+?>
 <?php get_header(); //include header.php ?>
 
 <main id="content">
