@@ -37,6 +37,14 @@
 		<?php comments_template(); ?>
 
 		<?php endwhile; ?>
+
+		<div class="pagination">
+			<?php 			
+			previous_post_link( '%link', '&larr; Earlier: %title' );
+			next_post_link( '%link', 'Later: %title &rarr;' );
+			?>
+		</div>
+
 	<?php else: ?>
 
 	<h2>Sorry, no posts found</h2>
