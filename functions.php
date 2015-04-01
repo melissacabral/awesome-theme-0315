@@ -1,4 +1,16 @@
 <?php
+//required for auto embeds
+if ( ! isset( $content_width ) ) $content_width = 694;
+
+//required for good Comment UX
+add_action('wp_enqueue_scripts', 'awesome_scripts' );
+function awesome_scripts(){
+	if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
+}
+
+//required since 4.1
+add_theme_support( 'title-tag' );
+
 //use this file for custom functions and activating 'sleeping' wordpress features
 //allow you to attach a "featured image" to each post or page
 add_theme_support('post-thumbnails');
@@ -17,6 +29,9 @@ add_theme_support( 'html5', array( 'search-form', 'comment-form', 'gallery', 'ca
 add_theme_support('automatic-feed-links' );
 
 add_image_size( 'big-banner', 1300, 300, true );
+
+//allows you to style the editor window with editor-style.css
+add_editor_style();
 
 /**
  * Improve Excerpts - change the length and annoying [...]
