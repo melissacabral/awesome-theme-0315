@@ -69,7 +69,6 @@ body {
 	font-family: 'Source Sans Pro', Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 	
 	
-	
 }
 #wrapper{
 	background-color: #565552;
@@ -1466,24 +1465,62 @@ body.single-product .post-meta span{
 /*
 ==Products Widget  
 */
-#featured-content{
+/*
+stylesheet for recent posts plugin with thumbnails
+*/
+.latest-products{
 	margin:2em 0;
 }
-#featured-content .products-widget li{
-	width:16.666666%;
-	margin:0;
-	padding:0;
+.latest-products img {      
+        margin:0 0 10px 0;
 }
-#featured-content .widget-title{
-	font-size:1.5em;
-	font-weight: 200;
-	margin:.75em 0;
-	text-align: center;
+
+.latest-products .readmore {
+        display:none;
 }
-#featured-content .products-widget .product-info{
-	max-width: 150px;
-	background-color: rgba(100,193,192,.85);
+.latest-products h2{
+        font-size:1.3em;
+        margin:1em 0;
+        text-align: center;
 }
+.latest-products a, .latest-products a:hover{
+        color: white;
+}
+.latest-products ul{
+        list-style-type:none;
+        text-align: center;
+}
+.latest-products li{
+       display: inline-block;
+       width:150px;
+       list-style-type:none;
+       margin:0 20px 0 0;
+       padding:0 ;
+       background-image:none !important;
+       position:relative;
+}
+.latest-products .product-info{
+        position:absolute;
+        left:0%;
+       bottom:0px;
+        padding:10px 10px 0;
+        width:100%;
+       height:70%;
+        background-color:rgba(107,203,202,.8);
+        opacity:0;
+        overflow:hidden;
+        -webkit-transition: all 200ms ease-in;
+        -moz-transition: all 200ms ease-in;
+        -ms-transition: all 200ms ease-in;
+        -o-transition: all 200ms ease-in;
+        transition: all 200ms ease-in;
+}
+.latest-products a:hover .product-info{
+        opacity: 1;
+        bottom:14px;
+}
+
+
 /*==Contact info options box*/
 .contact-info{
 	display: none;
@@ -1564,6 +1601,7 @@ body.single-product .post-meta span{
 	.home #sidebar{
 		width:100%;
 		float:none;
+		clear: both;
 	}
 	footer#colophon .widget {
 		width:25%;

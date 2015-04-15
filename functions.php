@@ -109,14 +109,54 @@ function awesome_widget_areas(){
 	) );
 }
 
+/**
+ * Display a set of products with thumbnail images
+ * @param int $number - the number of posts to show
+ */
+function awesome_show_products( $number = 4 ){
+	//custom query to get up to 6 recent products
+	$products_query = new WP_Query( array(
+		'post_type' 		=> 'product', //we registered this in our products plugin
+		'posts_per_page' 	=> $number,
+	) );
+	//custom loop
+	if( $products_query->have_posts() ):
+	 ?>
+	<section class="latest-products">
+		<h2>Newest Products in the shop:</h2>
+		<ul>
+			<?php while( $products_query->have_posts() ):
+				$products_query->the_post();
+			 ?>
+			<li>
+				<a href="<?php the_permalink(); ?>">
+					<?php the_post_thumbnail( 'thumbnail' ); ?>
+					<div class="product-info">
+						<h3><?php the_title(); ?></h3>
+						<p><?php the_excerpt(); ?></p>
+					</div>
+				</a>
+			</li>
+			<?php endwhile; ?>
+		</ul>
+	</section>
+	<?php 
+	endif; //custom loop 
+	//prevent clashing with other loops
+	wp_reset_postdata();
+}//end of function
 
 
 
-
-
-
-
-
-
-
+/**
+ * Exclude a specific category from the blog loop
+ * Example of how to use pre_get_posts
+ */
+//add_action( 'pre_get_posts', 'awesome_hide_category' );
+function awesome_hide_category( $query ){
+	//only if on the main query on the blog
+	if( $query->is_home()  ):
+		$query->set( 'cat', '-1' );
+	endif;
+}
 //no close PHP!

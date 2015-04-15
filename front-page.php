@@ -32,6 +32,9 @@
 
 	<?php endif;  //end THE LOOP ?>
 
+	<?php awesome_show_products( 6 ); //defined in functions.php ?>
+
+
 </main><!-- end #content -->
 
 <?php get_sidebar('home'); //include sidebar-home.php ?>
