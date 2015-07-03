@@ -8,8 +8,13 @@
 		<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
 			
 			<?php 
-			//show the featured image
-			the_post_thumbnail( 'big-banner' ); 
+			//run our rad slider plugin if it exists
+			if(function_exists('rad_slider')):
+				rad_slider();
+			else:
+				//show the featured image
+				the_post_thumbnail( 'big-banner' ); 
+			endif;
 			?>
 
 			<h2 class="home-quote"> 

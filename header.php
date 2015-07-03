@@ -22,6 +22,21 @@
 <body <?php body_class(); ?>>	
 	<div id="wrapper">
 	<header role="banner">
+
+		<?php //get the contact info from the options table
+		$values = get_option('rad_options');
+		if($values): ?>
+		<div class="contact-info">
+			<a href="tel:<?php echo $values['phone'] ?>">
+				<?php echo $values['phone'] ?>
+			</a>
+			<br>
+			<a href="mailto:<?php echo $values['email'] ?>">
+				<?php echo $values['email'] ?>
+			</a>
+		</div>
+		<?php endif; ?>
+
 		<div class="top-bar clearfix">
 			<h1 class="site-name">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ) ?>" rel="home"> 

@@ -159,4 +159,39 @@ function awesome_hide_category( $query ){
 		$query->set( 'cat', '-1' );
 	endif;
 }
+
+/**
+ * Theme Customization API example - add custom text and link colors
+ */
+add_action( 'customize_register', 'awesome_theme_customizer' );
+function awesome_theme_customizer( $wp_customize ){
+	//Link Color
+	$wp_customize->add_setting( 'awesome_link_color', array(
+		'default' => '#6bcbca',
+	) );
+	//UI for link color
+	$wp_customize->add_control( new WP_Customize_Color_Control( 
+		$wp_customize, 
+		'awesome_link_color_picker',
+		array(
+			'section' => 'colors', //this is one of the default sections, you can DIY
+			'settings' => 'awesome_link_color',
+			'label'	=> 'Link Color',
+		)
+	) );
+
+}
+
+//CSS for customization
+add_action('wp_head', 'awesome_customizer_css' );
+function awesome_customizer_css(){
+	?>
+	<style type="text/css">
+	a{
+		color:<?php echo get_theme_mod('awesome_link_color'); ?>; 
+	}
+	</style>
+	<?php 
+}
+
 //no close PHP!
